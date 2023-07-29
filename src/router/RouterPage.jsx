@@ -8,6 +8,7 @@ import Playlist from "../pages/Playlist/Playlist";
 import ErrorPage from "../pages/Error/ErrorPage";
 import SingleCategory from "../pages/SingleCategory/SingleCategory";
 import Singlevideo from "../pages/Singlevideo/Singlevideo";
+import PlayListOpen from "../pages/PlayListOpen/PlayListOpen";
 
 const RouterPage = () => {
   return (
@@ -21,6 +22,7 @@ const RouterPage = () => {
         />
 
         <Route path="/singlevideo/:videoid" element={<Singlevideo />} />
+        <Route path="/singleplaylist/:playid" element={<PlayListOpen />} />
 
         <Route path="/explore" element={<Explorepage />} />
         <Route path="/watchlater" element={<Watchlater />} />
