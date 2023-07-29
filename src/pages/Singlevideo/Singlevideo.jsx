@@ -32,8 +32,6 @@ const Singlevideo = () => {
 
   const finalVideo = state?.allvideos?.find((video) => video?._id === +videoid);
 
-  console.log(finalVideo);
-
   const category = state?.categories?.find(
     ({ category }) => category === finalVideo?.category
   );
@@ -111,14 +109,20 @@ const Singlevideo = () => {
     // console.log(indexvalue);
     const newFilterlist = state?.allplaylist?.reduce?.((acc, curr, index) => {
       // console.log(index, "index");
+      // console.log(curr?.video);
+      // console.log(name);
       return +index === +indexvalue
-        ? [...acc, { ...curr, video: [...curr?.video, name] }]
-        : [...acc, { ...curr }];
+        ? [
+            ...acc,
+            {
+              ...curr,
+              video: curr?.video?.length > 0 ? [...curr?.video, name] : [name],
+            },
+          ]
+        : [...acc, curr];
     }, []);
 
-    // const newPlaylist = sta
-
-    // console.log(newFilterlist);
+    console.log(newFilterlist);
 
     dispatch({ type: "PLAY", payload: [...newFilterlist] });
   };
@@ -128,8 +132,6 @@ const Singlevideo = () => {
     const filterallPlay = state?.allplaylist?.filter(
       (list, index) => index !== deletedIndex
     );
-
-    console.log(filterallPlay);
 
     dispatch({ type: "PLAY", payload: [...filterallPlay] });
   };
@@ -200,6 +202,7 @@ const Singlevideo = () => {
                         setPlaylist({ ...playlist, title: event.target.value })
                       }
                       placeholder="title"
+                      value={playlist?.title}
                     />
                   </div>
 
@@ -213,6 +216,7 @@ const Singlevideo = () => {
                         })
                       }
                       placeholder="description"
+                      value={playlist?.description}
                     />
                   </div>
 
@@ -227,7 +231,9 @@ const Singlevideo = () => {
                     {state?.allplaylist?.map((name, index) => (
                       <div key={index}>
                         <button
-                          onClick={() => videoplaylistHandler(name, index)}
+                          onClick={() =>
+                            videoplaylistHandler(finalVideo, index)
+                          }
                         >
                           <p>{name?.title}</p>
                         </button>
