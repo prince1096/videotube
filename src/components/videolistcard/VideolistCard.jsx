@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styles from "./VideolistCard.module.css";
 
 import { MdOutlineWatchLater } from "react-icons/md";
+import { MdWatchLater } from "react-icons/md";
 
 import { Link } from "react-router-dom";
+import { VideoContext } from "../../context/VideoProvider";
 
 const VideolistCard = ({ video, category }) => {
+  const { state, dispatch } = useContext(VideoContext);
+
+  const watchHandler = (video) => {
+    dispatch({
+      type: "WATCH_LATER",
+      payload: [...state?.watchLaterVideo, video],
+    });
+  };
+
+  const removewatchHandler = (video) => {
+    const filtervideoList = state?.watchLaterVideo?.filter(
+      (vid) => vid?._id !== video?._id
+    );
+
+    dispatch({
+      type: "WATCH_LATER",
+      payload: [...filtervideoList],
+    });
+  };
+
+  const presentVideo = state?.watchLaterVideo?.find(
+    (later) => later?._id === video?._id
+  );
+
   return (
     <div className={styles.videosdiv}>
       <div className={styles.imgdiv}>
@@ -18,13 +44,25 @@ const VideolistCard = ({ video, category }) => {
           //   height="240px"
         />
         <div className={styles.icondiv}>
-          <button className={styles.iconbtn}>
-            <MdOutlineWatchLater />
-          </button>
+          {presentVideo ? (
+            <button
+              className={styles.iconbtn}
+              onClick={() => removewatchHandler(video)}
+            >
+              <MdWatchLater />
+            </button>
+          ) : (
+            <button
+              className={styles.iconbtn}
+              onClick={() => watchHandler(video)}
+            >
+              <MdOutlineWatchLater />
+            </button>
+          )}
         </div>
       </div>
 
-      <Link to={`/singlevideo/${video._id}`} className={styles.videolink}>
+      <Link to={`/singlevideo/${video?._id}`} className={styles.videolink}>
         <div className={styles.videodetail}>
           <div>
             <img

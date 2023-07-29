@@ -2,8 +2,66 @@
   position: relative;
 }
 
+.singlevideo {
+  margin: 1rem;
+  padding: 1rem;
+}
+
 .play {
   position: absolute;
   top: 50%;
-  right: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: red;
+  background-color: transparent;
+  border: none;
+}
+
+.btna {
+  color: red;
+  background-color: transparent;
+}
+
+.detailv {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 10px;
+}
+
+.pdiv {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.addp {
+  font-size: 24px;
+}
+
+.mainimg {
+  width: 600px;
+}
+
+.playadd {
+  font-size: 28px;
+}
+
+.imgpp {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.titlep {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.comment {
+  margin-top: 1.5rem;
+}
+
+.cmt {
+  font-size: 20px;
 }

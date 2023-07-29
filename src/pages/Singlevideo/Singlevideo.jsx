@@ -6,6 +6,12 @@ import styles from "./Singlevideo.module.css";
 
 import { AiFillYoutube } from "react-icons/ai";
 
+import { AiOutlineComment } from "react-icons/ai";
+
+import { MdOutlineWatchLater } from "react-icons/md";
+
+import { MdPlaylistAdd } from "react-icons/md";
+
 const Singlevideo = () => {
   const { state } = useContext(VideoContext);
 
@@ -15,27 +21,56 @@ const Singlevideo = () => {
 
   console.log(finalVideo);
 
+  const category = state?.categories?.find(
+    ({ category }) => category === finalVideo?.category
+  );
+
   return (
-    <div>
+    <div className={styles.singlevideo}>
       {/* first part */}
       <div>
         <div className={styles.imgdiv}>
-          <img
-            src={finalVideo?.thumbnail}
-            alt=""
-            width="800px"
-            height="600px"
-          />
-
-          {/* <a href={finalVideo?.src}>ok</a> */}
+          <img src={finalVideo?.thumbnail} alt="" className={styles.mainimg} />
 
           <button className={styles.play}>
             {" "}
-            <a href={finalVideo?.src}>
-              <AiFillYoutube />{" "}
+            <a className={styles.btna} href={finalVideo?.src}>
+              <AiFillYoutube className={styles.youtubeicon} />{" "}
             </a>
           </button>
         </div>
+
+        <div className={styles.detailv}>
+          <div className={styles.pdiv}>
+            <img
+              src={category?.thumbnail}
+              alt=""
+              width="40px"
+              height="40px"
+              className={styles.imgpp}
+            />
+
+            <p className={styles.titlep}>{finalVideo?.title}</p>
+          </div>
+
+          <div className={styles.pdiv}>
+            <p className={styles.addp}>
+              <MdOutlineWatchLater />
+            </p>
+
+            <p className={styles.playadd}>
+              <MdPlaylistAdd />
+            </p>
+
+            <p className={styles.cmt}>
+              <AiOutlineComment />
+            </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <h3 className={styles.comment}>My Notes</h3>
       </div>
     </div>
   );

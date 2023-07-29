@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 
 import videos from "../data/video";
 import categories from "../data/category";
@@ -6,9 +6,12 @@ import categories from "../data/category";
 
 export const VideoContext = createContext();
 
+const storedVideos = JSON.parse(localStorage.getItem("watchlater"));
+
 export const initialState = {
   allvideos: [...videos],
   categories: [...categories],
+  watchLaterVideo: storedVideos || [],
 };
 
 const VideoProvider = ({ children }) => {
@@ -17,6 +20,9 @@ const VideoProvider = ({ children }) => {
       case "ALL_DATA":
         return { ...state };
 
+      case "WATCH_LATER":
+        return { ...state, watchLaterVideo: action.payload };
+
       default:
         return { ...state };
     }
@@ -24,7 +30,14 @@ const VideoProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(videoreducerFunction, initialState);
 
-  // console.log(state?.categories);
+  useEffect(
+    () =>
+      localStorage.setItem(
+        "watchlater",
+        JSON.stringify([state?.watchLaterVideo])
+      ),
+    [state?.watchLaterVideo]
+  );
 
   return (
     <div>
