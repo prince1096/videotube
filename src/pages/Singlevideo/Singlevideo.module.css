@@ -35,6 +35,12 @@
   align-items: center;
 }
 
+.iconbtn {
+  background-color: none;
+  border: none;
+  font-size: 20px;
+}
+
 .addp {
   font-size: 24px;
 }

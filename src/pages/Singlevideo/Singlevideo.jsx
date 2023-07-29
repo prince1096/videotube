@@ -9,11 +9,12 @@ import { AiFillYoutube } from "react-icons/ai";
 import { AiOutlineComment } from "react-icons/ai";
 
 import { MdOutlineWatchLater } from "react-icons/md";
+import { MdWatchLater } from "react-icons/md";
 
 import { MdPlaylistAdd } from "react-icons/md";
 
 const Singlevideo = () => {
-  const { state } = useContext(VideoContext);
+  const { state, dispatch } = useContext(VideoContext);
 
   const { videoid } = useParams();
 
@@ -23,6 +24,30 @@ const Singlevideo = () => {
 
   const category = state?.categories?.find(
     ({ category }) => category === finalVideo?.category
+  );
+
+  // const { state, dispatch } = useContext(VideoContext);
+
+  const watchHandler = (video) => {
+    dispatch({
+      type: "WATCH_LATER",
+      payload: [...state?.watchLaterVideo, video],
+    });
+  };
+
+  const removewatchHandler = (video) => {
+    const filtervideoList = state?.watchLaterVideo?.filter(
+      (vid) => vid?._id !== video?._id
+    );
+
+    dispatch({
+      type: "WATCH_LATER",
+      payload: [...filtervideoList],
+    });
+  };
+
+  const presentVideo = state?.watchLaterVideo?.find(
+    (later) => later?._id === finalVideo?._id
   );
 
   return (
@@ -55,7 +80,21 @@ const Singlevideo = () => {
 
           <div className={styles.pdiv}>
             <p className={styles.addp}>
-              <MdOutlineWatchLater />
+              {presentVideo ? (
+                <button
+                  className={styles.iconbtn}
+                  onClick={() => removewatchHandler(finalVideo)}
+                >
+                  <MdWatchLater />
+                </button>
+              ) : (
+                <button
+                  className={styles.iconbtn}
+                  onClick={() => watchHandler(finalVideo)}
+                >
+                  <MdOutlineWatchLater />
+                </button>
+              )}
             </p>
 
             <p className={styles.playadd}>
