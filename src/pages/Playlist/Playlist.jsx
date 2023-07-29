@@ -13,12 +13,13 @@ const Playlist = () => {
       <h2>Playlist</h2>
 
       <div>
+        <button>Add</button>
+      </div>
+
+      <div>
         {state?.allplaylist?.map((name, index) => (
           <div>
-            <Link
-              to={`/singleplaylist/${index}`}
-              // className={styles.videolink}
-            >
+            <Link to={`/singleplaylist/${index}`}>
               <img src={name?.video[0]?.thumbnail} alt="" />
             </Link>
             <p>{name?.title}</p>
