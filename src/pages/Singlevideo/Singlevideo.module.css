@@ -36,7 +36,7 @@
 }
 
 .iconbtn {
-  background-color: none;
+  background-color: white;
   border: none;
   font-size: 20px;
 }
@@ -51,6 +51,7 @@
 
 .playadd {
   font-size: 28px;
+  position: relative;
 }
 
 .imgpp {
@@ -69,5 +70,61 @@
 }
 
 .cmt {
+  font-size: 20px;
+  position: relative;
+}
+
+.textarea {
+  resize: none;
+  padding: 0.4rem;
+}
+
+.commentarea {
+  position: absolute;
+  left: -2540%;
+  top: 280%;
+}
+
+.cmtbtn,
+.addlistbtn {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  background-color: #3498db;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 2px solid #3498db;
+  display: inline-block;
+  text-align: center;
+}
+
+.commbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.delbtn {
+  background-color: white;
+  border: none;
+  font-size: 16px;
+}
+
+.playinputdiv {
+  position: absolute;
+  top: 200%;
+  left: -600%;
+}
+
+.commentbtnn {
+  background-color: white;
+  border: none;
   font-size: 20px;
 }
