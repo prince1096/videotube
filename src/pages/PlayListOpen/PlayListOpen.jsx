@@ -26,8 +26,6 @@ const PlayListOpen = () => {
     );
   };
 
-  //   console.log(findcategory);
-
   return (
     <div>
       <h2>{findPlaylist?.title}</h2>
