@@ -1,0 +1,13 @@
+.watchlater {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 1rem;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.heading {
+  margin: 1rem;
+  padding: 1rem;
+}

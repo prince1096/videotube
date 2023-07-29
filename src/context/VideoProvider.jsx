@@ -11,7 +11,7 @@ const storedVideos = JSON.parse(localStorage.getItem("watchlater"));
 export const initialState = {
   allvideos: [...videos],
   categories: [...categories],
-  watchLaterVideo: storedVideos || [],
+  watchLaterVideo: [...storedVideos] || [],
 };
 
 const VideoProvider = ({ children }) => {
@@ -34,7 +34,7 @@ const VideoProvider = ({ children }) => {
     () =>
       localStorage.setItem(
         "watchlater",
-        JSON.stringify([state?.watchLaterVideo])
+        JSON.stringify([...state?.watchLaterVideo])
       ),
     [state?.watchLaterVideo]
   );
