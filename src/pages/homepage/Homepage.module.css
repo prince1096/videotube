@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.catdiv {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 5px;
+  padding: 5px;
+}
+
+.catp {
+  font-weight: bolder;
+  margin: 4px 0;
+}
+
+.homeh2 {
+  margin: 5px;
+  padding: 5px;
+}

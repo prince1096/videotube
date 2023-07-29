@@ -1,0 +1,66 @@
+.videodetail {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.img {
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+}
+
+.p {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.pp {
+  font-size: 14px;
+}
+
+.imgdiv {
+  position: relative;
+  width: 300px;
+}
+
+.icondiv {
+  background-color: whitesmoke;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 20px;
+  padding: 4px 7px;
+  border-bottom-left-radius: 10px;
+}
+
+.iconbtn {
+  background-color: none;
+  border: none;
+  font-size: 20px;
+}
+
+.videosdiv {
+  width: 300px;
+  margin: 1.5rem;
+}
+
+.bigimg {
+  width: 300px;
+  height: 210px;
+  object-fit: cover;
+}
+
+.mainvideodiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.heading {
+  margin: 1rem 1.5rem;
+}
+
+.videolink {
+  text-decoration: none;
+  color: black;
+}
