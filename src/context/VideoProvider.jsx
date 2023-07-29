@@ -14,7 +14,7 @@ const storedPlaylist = JSON.parse(localStorage.getItem("playlist"));
 export const initialState = {
   allvideos: [...videos],
   categories: [...categories],
-  watchLaterVideo: [...storedVideos] || [],
+  watchLaterVideo: storedVideos || [],
   comments: storedComments || [],
   allplaylist: storedPlaylist || [],
 };
